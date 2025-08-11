@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portafolio — Kevin | Diseñador Publicitario</title>
+  <meta name="description" content="Portafolio de diseño publicitario: Diseño gráfico, Publicidad, Photoshop y Blender.">
+  <style>
+    /* -----------------------
+       Reset ligero
+       ----------------------- */
+    :root{
+      --bg:#0f1724; /* deep slate */
+      --card:#0b1220;
+      --accent:#f6a800; /* naranja cálido */
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      --max-width:1100px;
+      --radius:14px;
+      --gutter:18px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071023 0%, #071428 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:36px 18px;
+      display:flex;
+      justify-content:center;
+      font-size:16px;
+    }
+
+    .site{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    /* NAV */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffce66);
+      display:grid;place-items:center;color:#071428;font-weight:700;font-size:18px
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    nav a:hover{color:var(--accent)}
+
+    /* HERO */
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:22px;border-radius:var(--radius);backdrop-filter: blur(6px);
+      display:flex;gap:20px;align-items:center;margin-bottom:22px;box-shadow:0 6px 20px rgba(2,6,23,0.6)
+    }
+    .hero .left{flex:1}
+    .hero h1{margin:0;font-size:28px}
+    .hero p{color:var(--muted);margin-top:8px}
+    .cta{margin-top:12px;display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#071428;font-weight:700;text-decoration:none}
+
+    /* SECTIONS */
+    section{margin-bottom:28px}
+    h2{margin:4px 0 12px 0}
+    .grid{
+      display:grid;gap:var(--gutter);
+      grid-template-columns:repeat(3,1fr);
+    }
+
+    /* portfolio cards */
+    .card{
+      background:var(--card);border-radius:12px;padding:10px;cursor:pointer;overflow:hidden;display:flex;flex-direction:column;gap:10px
+    }
+    .thumb{height:160px;background:#09101a;border-radius:8px;display:grid;place-items:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta{display:flex;justify-content:space-between;align-items:center}
+    .tag{font-size:13px;color:var(--muted)}
+    .title{font-weight:700}
+
+    /* filter buttons */
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .filters button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:9px;color:var(--muted);cursor:pointer}
+    .filters button.active{border-color:var(--accent);color:var(--accent);box-shadow:0 6px 18px rgba(246,168,0,0.08)}
+
+    /* modal lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.7);display:none;align-items:center;justify-content:center;padding:22px}
+    .lightbox.open{display:flex}
+    .lightbox .panel{max-width:1000px;width:100%;background:linear-gradient(180deg,#071428, #081726);padding:18px;border-radius:12px;box-shadow:0 18px 60px rgba(2,6,23,0.8)}
+    .lightbox img{max-width:100%;height:auto;border-radius:8px;display:block}
+    .lightbox .caption{color:var(--muted);margin-top:8px}
+
+    /* contact */
+    .contact{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    form{background:var(--glass);padding:12px;border-radius:10px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .btn-send{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:9px;background:var(--accent);color:#071428;font-weight:700;text-decoration:none;border:none;cursor:pointer}
+
+    footer{color:var(--muted);font-size:14px;margin-top:18px}
+
+    /* responsive */
+    @media(max-width:980px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .contact{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .grid{grid-template-columns:1fr}
+      .hero{flex-direction:column;align-items:flex-start}
+      .logo{width:48px;height:48px}
+    }
+
+    /* small helper */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo">K</div>
+        <div>
+          <div style="font-weight:700">Kevin — Diseñador Publicitario</div>
+          <div style="font-size:13px;color:var(--muted)">Portafolio profesional</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#portfolio">Portafolio</a>
+        <a href="#blender">Blender</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="left">
+          <h1>Hola — Soy Kevin! Y esta es mi página.</h1>
+          <p class="muted">Diseñador publicitario. Aquí muestro proyectos de diseño gráfico, campañas publicitarias, retoque en Photoshop y escenas/visuales hechas en Blender. Y demás cosas que he hecho.</p>
+          <a class="cta" href="#portfolio">Explorar portafolio</a>
+        </div>
+        <div style="width:220px;text-align:center">
+          <!-- Puedes reemplazar esto por tu foto o logo (webp/png) -->
+          <div style="border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)">
+            <img src="file:///C:/Users/kevin/3D%20Objects/logo.png" alt="Foto de perfil" style="width:100%;height:120px;object-fit:cover;display:block">
+          </div>
+          <div class="muted" style="margin-top:8px;font-size:13px">Diseño: identidad, anuncios, retoque, 3D</div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio">
+        <h2>Portafolio</h2>
+        <div class="filters" role="tablist" aria-label="Filtrar por categoría">
+          <button class="filter active" data-filter="all">Todo</button>
+          <button class="filter" data-filter="diseño">Diseño gráfico</button>
+          <button class="filter" data-filter="publicidad">Publicidad</button>
+          <button class="filter" data-filter="photoshop">Photoshop</button>
+          <button class="filter" data-filter="blender">Blender</button>
+        </div>
+
+        <div class="grid" id="gallery">
+          <!-- Cada .card representa un proyecto. Sustituye las imágenes por las tuyas. -->
+
+          <!-- Ejemplo Diseño Gráfico -->
+          <article class="card" data-cat="diseño" tabindex="0">
+            <div class="thumb"><img src="file:///C:/Users/kevin/OneDrive/Documentos/PAGINAS%20WEB/tarjeta%20de%20presentaci%C3%B3n_Mesa%20de%20trabajo%201.png" alt="Logotipo ejemplo"></div>
+            <div class="meta"><div class="title">Logotipo — Ryu's Feline</div><div class="tag">Diseño</div></div>
+            <div class="muted">Identidad visual: isotipo + paleta, aplicaciones en tarjeta</div>
+          </article>
+
+          <!-- Ejemplo Publicidad -->
+          <article class="card" data-cat="publicidad" tabindex="0">
+            <div class="thumb"><img src="file:///C:/Users/kevin/Downloads/Muppie_Mesa%20de%20trabajo%201%20(convert.io).png" alt="Campaña publicitaria"></div>
+            <div class="meta"><div class="title">Campaña Muppie -Ryus's Feline</div><div class="tag">Publicidad</div></div>
+            <div class="muted">Concepto y piezas para campaña de concientización</div>
+          </article>
+
+          <!-- Ejemplo Photoshop -->
+          <article class="card" data-cat="photoshop" tabindex="0">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=1400&auto=format&fit=crop&s=placeholder" alt="Retoque fotográfico"></div>
+            <div class="meta"><div class="title">Retoque — Fashion Edit</div><div class="tag">Photoshop</div></div>
+            <div class="muted">Composición y corrección de color</div>
+          </article>
+
+          <!-- Ejemplo Blender -->
+          <article class="card" data-cat="blender" tabindex="0">
+            <div class="thumb"><img src="file:///D:/dibujo/BLENDER/RENDERS/imagen%20SR%20CRUMBLE.png" alt="Render Blender"></div>
+            <div class="meta"><div class="title">Escena 3D — Concept Car</div><div class="tag">Blender</div></div>
+            <div class="muted">Render, iluminación y edición final</div>
+          </article>
+
+          <!-- Puedes duplicar estas tarjetas y reemplazar src/alt/title/desc con tus proyectos reales. -->
+        </div>
+
+        <p class="muted" style="margin-top:12px;font-size:14px">Consejo: reemplaza las URL de las imágenes por las tuyas (WebP recomendado). Si subes muchas imágenes, optimízalas para web para mantener la velocidad de carga.</p>
+      </section>
+
+      <!-- SECCIÓN DEDICADA A BLENDER (más espacio para mostrar renders y breakdowns) -->
+      <section id="blender">
+        <h2>Blender — Renders & Breakdown</h2>
+        <p class="muted">Aquí puedes mostrar tus renders, wireframes, mapas de normales, y vídeos de timelapse. Recomendado: exportar miniaturas (.webp) para la galería y enlazar los .mp4 para playback.</p>
+        <div class="grid">
+          <article class="card" data-cat="blender" tabindex="0">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1400&auto=format&fit=crop&s=placeholder" alt="Render 1"></div>
+            <div class="meta"><div class="title">Render — Producto</div><div class="tag">Blender</div></div>
+            <div class="muted">Cycles / Eevee — composición y post</div>
+          </article>
+
+          <article class="card" data-cat="blender" tabindex="0">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop&s=placeholder" alt="Wireframe"></div>
+            <div class="meta"><div class="title">Wireframe / Breakdown</div><div class="tag">Blender</div></div>
+            <div class="muted">Topology & UVs — explicación en la página del proyecto</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section id="servicios">
+        <h2>Servicios</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="background:var(--card);padding:12px;border-radius:10px"><strong>Identidad de marca</strong><div class="muted">Logotipos, manual de marca, aplicaciones</div></div>
+          <div style="background:var(--card);padding:12px;border-radius:10px"><strong>Campañas publicitarias</strong><div class="muted">Banners, vallas, mupis, piezas digitales</div></div>
+          <div style="background:var(--card);padding:12px;border-radius:10px"><strong>Post-producción</strong><div class="muted">Retoque, composiciones y montaje</div></div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact">
+          <div>
+            <form id="contactForm" onsubmit="event.preventDefault();alert('Formulario de contacto simulado — copiar correo o integrar con Formspree / backend.');">
+              <label class="muted">Tu nombre</label>
+              <input required placeholder="Tu nombre">
+              <label class="muted" style="margin-top:8px">Correo</label>
+              <input type="email" required placeholder="tu@correo.com">
+              <label class="muted" style="margin-top:8px">Mensaje</label>
+              <textarea rows="5" placeholder="Cuéntame del proyecto"></textarea>
+              <button class="btn-send" type="submit">Enviar</button>
+            </form>
+          </div>
+
+          <aside style="background:var(--card);padding:12px;border-radius:10px">
+            <div style="font-weight:700">Información</div>
+            <div class="muted" style="margin-top:6px">Correo: <span style="color:var(--accent)">tu.email@ejemplo.com</span></div>
+            <div class="muted" style="margin-top:6px">Instagram / Behance / LinkedIn</div>
+            <div class="muted" style="margin-top:12px;font-size:13px">Consejo técnico: si quieres recibir mensajes reales, integra este formulario con Formspree, Netlify Forms o tu propio endpoint.</div>
+          </aside>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <span id="year"></span> Kevin — Diseñador Publicitario. Plantilla creada para portafolio.</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-hidden="true">
+    <div class="panel">
+      <button id="closeLightbox" style="float:right;background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer">Cerrar ✕</button>
+      <div style="clear:both"></div>
+      <img id="lightboxImg" src="" alt="Visor">
+      <div class="caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    // Fecha en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // FILTRADO
+    const filters = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('#gallery .card');
+
+    function setActive(btn){filters.forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+
+    filters.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        setActive(btn);
+        const f = btn.dataset.filter;
+        cards.forEach(c=>{
+          const cat = c.dataset.cat;
+          if(f === 'all' || cat === f) c.style.display = '';
+          else c.style.display = 'none';
+        })
+      })
+    })
+
+    // LIGHTBOX (abre al hacer click en cualquier card)
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCaption = document.getElementById('lightboxCaption');
+    const closeBtn = document.getElementById('closeLightbox');
+
+    function openLightbox(imgSrc, caption){
+      lbImg.src = imgSrc;
+      lbCaption.textContent = caption || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
+
+    document.querySelectorAll('.card').forEach(c=>{
+      c.addEventListener('click', ()=>{
+        const img = c.querySelector('img');
+        const title = c.querySelector('.title').textContent;
+        openLightbox(img.src, title);
+      });
+      // también abrir con Enter para accesibilidad
+      c.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') c.click(); });
+    });
+
+    // NOTAS DE USO (en consola para quien abra el archivo)
+    console.log('%cPlantilla de portafolio — instrucciones:', 'font-weight:700;color:#fff');
+    console.log('1) Reemplaza las imágenes de ejemplo por tus archivos (webp/jpg).');
+    console.log('2) Para mostrar videos o timelapses de Blender, puedes reemplazar la thumb por un <video> o enlazar un archivo .mp4.');
+    console.log('3) Si vas a publicar en línea, sube el sitio a Netlify, Vercel o GitHub Pages.');
+  </script>
+
+  <!--
+    -----------------------------
+    INSTRUCCIONES RÁPIDAS
+    -----------------------------
+    - Guarda este archivo como "index.html" en una carpeta.
+    - Crea una subcarpeta "assets" y coloca allí tus imágenes optimizadas (webp/jpg).
+    - Abre el archivo en el navegador para previsualizar.
+    - Para galerías más avanzadas (paginación, carga diferida), puedo añadir lazy-loading y un CMS (Netlify CMS / Contentful).
+
+    ¿Quieres que convierta esto a una versión con CMS (ej. Netlify CMS) o a un site estático listo para GitHub Pages?
+  -->
+</body>
+</html>
